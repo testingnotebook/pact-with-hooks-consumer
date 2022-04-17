@@ -1,0 +1,26 @@
+{
+  "name": "pact-with-hooks-consumer",
+  "version": "1.0.0",
+  "description": "Example of a pact consumer test to run on AWS CodeBuild.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/testingnotebook/pact-with-hooks-consumer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/testingnotebook/pact-with-hooks-consumer/issues"
+  },
+  "homepage": "https://github.com/testingnotebook/pact-with-hooks-consumer#readme",
+  "dependencies": {
+    "@pact-foundation/pact": "^9.17.3",
+    "axios": "^0.26.1",
+    "jest": "^27.5.1"
+  },
+  "devDependencies": {},
+  "keywords": []
+}
