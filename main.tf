@@ -1,5 +1,5 @@
-resource "aws_iam_role" "consumber-build-role" {
-  name = "consumber-build-role"
+resource "aws_iam_role" "consumer-role" {
+  name = "consumer-role"
 
   assume_role_policy = <<EOF
 {
@@ -17,8 +17,8 @@ resource "aws_iam_role" "consumber-build-role" {
 EOF
 }
 
-resource "aws_iam_role_policy" "example" {
-  role = aws_iam_role.consumber-build-role.name
+resource "aws_iam_role_policy" "consumer-policy" {
+  role = aws_iam_role.consumer-role.name
 
   policy = <<POLICY
 {
@@ -40,11 +40,11 @@ resource "aws_iam_role_policy" "example" {
 POLICY
 }
 
-resource "aws_codebuild_project" "consumber-build" {
-  name          = "consumber-build"
-  description   = "Run consumber pact tests and publish to broker."
+resource "aws_codebuild_project" "consumer" {
+  name          = "consumer"
+  description   = "Run consumer pact tests and publish to broker."
   build_timeout = "5"
-  service_role  = aws_iam_role.consumber-build-role.arn
+  service_role  = aws_iam_role.consumer-role.arn
 
     artifacts {
     type = "NO_ARTIFACTS"
@@ -66,7 +66,7 @@ resource "aws_codebuild_project" "consumber-build" {
 
   source {
     type            = "GITHUB"
-    location        = "https://github.com/testingnotebook/pact-with-hooks"
+    location        = "https://github.com/testingnotebook/pact-with-hooks-consumer"
     git_clone_depth = 1
 
     git_submodules_config {
